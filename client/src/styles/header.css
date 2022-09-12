@@ -1,0 +1,151 @@
+.header {
+    width: 100%;
+    padding-top: 3em;
+    padding-bottom: 1em;
+    height: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    flex-grow: 1;
+    margin-right: 1em;
+}
+
+.navbar {
+    display: flex;
+    flex-grow: 12;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-menu-items {
+    list-style-type: none;
+    display: flex;
+    color: gray;
+}
+
+.navbar-item:hover {
+    color: black;
+}
+
+.navbar-item {
+    margin-right: 50px;
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: gray;
+}
+
+.navbar-auth-buttons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style-type: none;
+}
+
+.login-btn {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: gray;
+}
+
+.login-btn:hover {
+    color: black;
+}
+
+.signup-btn {
+    padding: 8px;
+    width: 6em;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    background-color: hsl(180, 66%, 49%);
+    color: white;
+    cursor: pointer;
+}
+
+.signup-btn:hover {
+    background-color: hsl(180, 66%, 70%);
+}
+
+.mobile-nav-icon {
+    font-size: 2em;
+    display: none;
+}
+
+@media screen and (max-width: 960px) {
+    .mobile-nav-icon {
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: -100%;
+        left: 50%;
+        transform: translate(-50%);
+        flex-direction: column;
+        width: 90%;
+        height: 60vh;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+        flex-grow: 1;
+        z-index: 1;
+    }
+
+    .navbar.active {
+        position: absolute;
+        background-color: hsl(257, 27%, 26%);
+        top: 6em;
+        transition: all 0.5s ease;
+        z-index: 1;
+    }
+
+    .navbar-menu-items {
+        flex-direction: column;
+        border-bottom: 1px solid white;
+        height: 60%;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 90%;
+    }
+
+    .navbar-item {
+        margin: 0;
+        width: 100%;
+        font-size: 1.4em;
+        color: #EEE;
+        font-weight: bold;
+    }
+
+    .navbar-auth-buttons {
+        flex-direction: column;
+        width: 90%;
+        gap: 0;
+        height: 40%;
+        justify-content: space-evenly;
+    }
+
+    .signup-btn-li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .signup-btn {
+        width: 100%;
+        font-size: 1.4em;
+        color: #EEE;
+        font-weight: bold;
+    }
+
+    .login-btn {
+        color: #EEE;
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+}
+
+
+

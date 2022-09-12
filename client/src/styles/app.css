@@ -1,0 +1,34 @@
+*, *::before, *::after { 
+	box-sizing: border-box; /* Border and padding is included in total height/width of an element */
+	padding: 0;
+	margin: 0;
+}
+
+html, body {
+    font-size: calc(12px + (25 - 12) * ((100vw - 320px) / (3480 - 320)));
+	min-height: 100%;
+	background: #fff;
+	color: #000;
+	overflow-x: hidden;
+}
+
+#root {
+	width: 100%;
+	position: relative;
+}
+
+.container {
+	width: 75%;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow-x: hidden;
+}
+
+@media screen and (max-width: 960px) {
+	.container {
+		width: 90%;
+	}
+
+}
