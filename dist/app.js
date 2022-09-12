@@ -16,10 +16,14 @@ const express_1 = __importDefault(require("express"));
 const validateUrl_1 = __importDefault(require("./middleware/validateUrl"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const cors_1 = __importDefault(require("cors"));
+const path = require('path');
 const app = (0, express_1.default)();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+if (process.env.NODE_ENV === 'production') {
+    app.use(express_1.default.static(path.join(__dirname, '../client/build')));
+}
 app.post('/', validateUrl_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { urlInput } = req.body;
@@ -32,6 +36,9 @@ app.post('/', validateUrl_1.default, (req, res) => __awaiter(void 0, void 0, voi
         res.status(500).send();
     }
 }));
+app.get('/*', (req, res) => {
+    res.sendFile('client/build/index.html', { root: __dirname });
+});
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
