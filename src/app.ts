@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cors())
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/build')))
+    app.use(express.static(path.join(__dirname, '../client/index.html')))
 }
 
 app.post('/', validateUrl, async (req, res) => {
@@ -27,7 +27,7 @@ app.post('/', validateUrl, async (req, res) => {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('client/build/index.html', {root: __dirname});
+    res.sendFile('client/index.html', {root: __dirname});
 })
 
 
