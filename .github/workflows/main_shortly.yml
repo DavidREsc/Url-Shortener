@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
+          cache: 'npm'
 
       - name: Build client
         run: |
@@ -64,4 +65,5 @@ jobs:
           app-name: 'Shortly'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_894DCBD8E19C4D8C98AD99C5B6BBAFA8 }}
+          scm-do-build-during-deployment: true
           package: .
