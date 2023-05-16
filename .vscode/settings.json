@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/49f9044e-9859-4bda-873d-796b33e248fd/resourceGroups/ShortlyResourceGroup/providers/Microsoft.Web/sites/Shortly",
+    "appService.deploySubpath": "."
+}
