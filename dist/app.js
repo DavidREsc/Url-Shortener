@@ -17,18 +17,18 @@ const validateUrl_1 = __importDefault(require("./middleware/validateUrl"));
 const node_fetch_1 = __importDefault(require("node-fetch"));
 const cors_1 = __importDefault(require("cors"));
 const path = require('path');
-const app = (0, express_1.default)();
+const app = express_1.default();
 const PORT = process.env.PORT || 3001;
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
+app.use(cors_1.default());
 if (process.env.NODE_ENV === 'production') {
-    app.use(express_1.default.static(path.join(__dirname, '../client/build')));
+    app.use(express_1.default.static(path.join(__dirname, '../../client/build')));
 }
 app.post('/', validateUrl_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { urlInput } = req.body;
         console.log(urlInput);
-        const response = yield (0, node_fetch_1.default)(`http://api.shrtco.de/v2/shorten?url=${urlInput}`);
+        const response = yield node_fetch_1.default(`http://api.shrtco.de/v2/shorten?url=${urlInput}`);
         const shortendUrl = yield response.json();
         res.send(shortendUrl);
     }
