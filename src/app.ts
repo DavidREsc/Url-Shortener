@@ -27,7 +27,8 @@ app.post('/', validateUrl, async (req, res) => {
 })
 
 app.get('/*', (req, res) => {
-    res.sendFile('client/index.html', {root: __dirname});
+    const indexPath = path.join(__dirname, '../client/index.html')
+    res.sendFile(indexPath);
 })
 
 
