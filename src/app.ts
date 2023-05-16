@@ -3,6 +3,8 @@ import validateUrl from './middleware/validateUrl'
 import fetch from 'node-fetch'
 import cors from 'cors'
 const path = require('path');
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -11,7 +13,8 @@ app.use(express.json())
 app.use(cors())
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/index.html')))
+    console.log('Starting in production')
+    app.use(express.static(path.join(__dirname, '../client')))
 }
 
 app.post('/', validateUrl, async (req, res) => {
