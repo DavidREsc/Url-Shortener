@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express_1.default.json());
 app.use(cors_1.default());
 if (process.env.NODE_ENV === 'production') {
-    app.use(express_1.default.static(path.join(__dirname, '../client/build')));
+    app.use(express_1.default.static(path.join(__dirname, '../client/index.html')));
 }
 app.post('/', validateUrl_1.default, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -37,7 +37,7 @@ app.post('/', validateUrl_1.default, (req, res) => __awaiter(void 0, void 0, voi
     }
 }));
 app.get('/*', (req, res) => {
-    res.sendFile('client/build/index.html', { root: __dirname });
+    res.sendFile('client/index.html', { root: __dirname });
 });
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
