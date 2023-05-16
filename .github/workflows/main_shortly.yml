@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: "."
+
 jobs:
   build:
     runs-on: windows-latest
@@ -20,7 +23,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '18.x'
-          cache: 'npm'
 
       - name: Build client
         run: |
@@ -59,7 +61,7 @@ jobs:
         uses: actions/download-artifact@v2
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: Azure/functions-action@v1
         id: deploy-to-webapp
         with:
           app-name: 'Shortly'
